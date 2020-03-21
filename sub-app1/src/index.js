@@ -1,10 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// render micro frontend function
+window.rendersubapp1 = (containerId, history) => {
+  ReactDOM.render(
+    <App history={history} />,
+    document.getElementById(containerId)
+  );
+  serviceWorker.unregister();
+};
+
+// unmount micro frontend function
+window.unmountsubapp1 = containerId => {
+  ReactDOM.unmountComponentAtNode(document.getElementById(containerId));
+};
+
+// Mount to root if it is not a micro frontend
+if (!document.getElementById("subapp1-container")) {
+  ReactDOM.render(<App />, document.getElementById("root"));
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
