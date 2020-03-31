@@ -26,3 +26,60 @@ npm i --save react-app-rewired
    "eject": "react-app-rewired eject"
  },
 ```
+- Add config-overrides.js to disable code splitting. By default, code splitting is enabled. An application is split into several chunks that can be loaded onto the page independently. You can see http://localhost:4001/asset-manifest.json before adding react-app-rewired. It clearly shows the app has been chunked.
+```jsx
+//config-overrides.js
+module.exports = {
+  webpack: (config, env) => {
+    config.optimization.runtimeChunk = false;
+    config.optimization.splitChunks = {
+      cacheGroups: {
+        default: false,
+      },
+    };
+    return config;
+  },
+};
+```
+- Make changes in src/index.js to define render and unmount functions.
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+
+// render micro frontend function
+window.rendersubapp1 = (containerId, history) => {
+  ReactDOM.render(
+    <App history={history} />,
+    document.getElementById(containerId)
+  );
+  serviceWorker.unregister();
+};
+
+// unmount micro frontend function
+window.unmountsubapp1 = containerId => {
+  ReactDOM.unmountComponentAtNode(document.getElementById(containerId));
+};
+
+// Mount to root if it is not a micro frontend
+if (!document.getElementById("subapp1-container")) {
+  ReactDOM.render(<App />, document.getElementById("root"));
+}
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
+```
+- If an app is running independent, it will be rendered to root element. If it is a micro front-end, it will be rendered to containerId by window.rendersubapp1.
+- Use src/setupProxy.js to set up CORS rule.
+```jsx
+module.exports = app => {
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+};
+```
