@@ -13,3 +13,16 @@ Th applications are loaded into a micro-frontend container. The container runs i
 - The selected micro front-end goes to the specific port to fetch the application’s asset-manifest.json. From this JSON file, the included main.js is put on a script tag and loaded.
 - A manifest file contains a mapping of all asset filenames.
 - Container app passes the containerId and history for its micro front-ends to be rendered.
+- Install "react-app-rewired" — This allows customizing the app without ejecting app.
+```jsx
+npm i --save react-app-rewired
+```
+- Modify package.json to set port and use "react-app-rewired" in sub-apps.
+```jsx
+ "scripts": {
+   "start": "PORT=4001 react-app-rewired start",
+   "build": "react-app-rewired build",
+   "test": "react-app-rewired test",
+   "eject": "react-app-rewired eject"
+ },
+```
