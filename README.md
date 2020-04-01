@@ -5,6 +5,9 @@ Micro-frontend architecture is a design approach in which a front-end app is dec
 
 Th applications are loaded into a micro-frontend container. The container runs it as of the micro frontend is its own component and provides seamless workflow to users.
 
+<p align="center">
+  <img src="microfrontend.gif">
+</p>
 
 ### This is the workflow of how micro front-ends work:
 - Launch container app.
