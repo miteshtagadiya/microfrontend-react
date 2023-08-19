@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
 import MicroFrontend from "./MicroFrontend";
 
 const {
@@ -16,9 +16,9 @@ const SubApp1 = ({ history }) => (
 );
 
 const Home = () => (
-  <>
+  <div className="App">
     <p>Rendered by Container</p>
-  </>
+ </div>
 );
 
 const App = props => {
@@ -49,6 +49,19 @@ const App = props => {
             to="/subapp1"
           >
             SubApp1
+          </NavLink>
+        </div>
+        <div style={{ padding: "0px 15px" }}>
+          <NavLink
+            style={{
+              textDecoration: "none",
+              fontWeight: "bold",
+              color: "#282c34",
+              fontSize: 20
+            }}
+            to="/subapp2"
+          >
+            SubApp3
           </NavLink>
         </div>
         <div style={{ padding: "0px 15px" }}>
