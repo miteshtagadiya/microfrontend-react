@@ -1,0 +1,25 @@
+{
+  "name": "module-federation-microfrontends",
+  "version": "2.0.0",
+  "private": true,
+  "description": "React micro-frontends with Vite and Module Federation",
+  "workspaces": [
+    "container",
+    "sub-app1",
+    "sub-app2"
+  ],
+  "scripts": {
+    "dev": "concurrently -n container,sub-app1,sub-app2 -c blue,green,magenta \"npm run dev -w container\" \"npm run dev -w sub-app1\" \"npm run dev -w sub-app2\"",
+    "dev:container": "npm run dev -w container",
+    "dev:sub-app1": "npm run dev -w sub-app1",
+    "dev:sub-app2": "npm run dev -w sub-app2",
+    "build": "npm run build -w sub-app1 && npm run build -w sub-app2 && npm run build -w container",
+    "preview": "concurrently -n container,sub-app1,sub-app2 -c blue,green,magenta \"npm run preview -w container\" \"npm run preview -w sub-app1\" \"npm run preview -w sub-app2\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

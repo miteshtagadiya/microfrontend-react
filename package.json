@@ -1,0 +1,20 @@
+{
+  "name": "microfrontend-react",
+  "version": "2.0.0",
+  "private": true,
+  "description": "React micro-frontend demos: Module Federation (Vite) and classic asset-manifest (CRA)",
+  "scripts": {
+    "install:mf": "npm install --prefix module-federation",
+    "install:am": "npm install --prefix asset-manifest",
+    "install:all": "npm run install:mf && npm run install:am",
+    "dev:mf": "npm run dev --prefix module-federation",
+    "dev:am": "npm start --prefix asset-manifest",
+    "start:mf": "npm run dev --prefix module-federation",
+    "start:am": "npm start --prefix asset-manifest",
+    "build:mf": "npm run build --prefix module-federation",
+    "build:am": "npm run build --prefix asset-manifest"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
