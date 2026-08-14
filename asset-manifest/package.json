@@ -1,0 +1,24 @@
+{
+  "name": "asset-manifest-microfrontends",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Classic asset-manifest runtime micro-frontends (CRA + react-app-rewired)",
+  "workspaces": [
+    "container",
+    "sub-app1",
+    "sub-app2"
+  ],
+  "scripts": {
+    "start": "concurrently -n container,sub-app1,sub-app2 -c blue,green,magenta \"npm run start -w container\" \"npm run start -w sub-app1\" \"npm run start -w sub-app2\"",
+    "start:container": "npm run start -w container",
+    "start:sub-app1": "npm run start -w sub-app1",
+    "start:sub-app2": "npm run start -w sub-app2",
+    "build": "npm run build -w sub-app1 && npm run build -w sub-app2 && npm run build -w container"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
