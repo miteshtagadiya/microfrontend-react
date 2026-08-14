@@ -2,9 +2,15 @@
 
 React micro-frontend reference repo. Two complete demos, same product shape (host shell + two remotes), different integration contracts.
 
+## Demo
+
+Host shell routes between container-owned Home and two remotes (SubApp1 / SubApp2). Same UX in both folders below.
+
 <p align="center">
-  <img src="microfrontend.gif" alt="Micro-frontend demo">
+  <img src="microfrontend.gif" alt="Micro-frontend demo showing container navigation across Home, SubApp1, and SubApp2">
 </p>
+
+`microfrontend.gif` lives at repo root (same asset as `master`) and is linked from each flow README.
 
 ---
 

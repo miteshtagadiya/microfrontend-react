@@ -3,6 +3,10 @@
 > Parent overview: [../README.md](../README.md)  
 > Modern twin: [../module-federation](../module-federation)
 
+<p align="center">
+  <img src="../microfrontend.gif" alt="Micro-frontend demo">
+</p>
+
 Classic **runtime integration**: remotes publish CRA `asset-manifest.json`; the host fetches that manifest, injects CSS/JS tags, then calls `window.rendersubapp*` to mount into a DOM node.
 
 Updated packages (vs original React 16 / `react-scripts@3` demo):
